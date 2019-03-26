@@ -1,5 +1,5 @@
-<h2>{{profile.name | uppercase}}</h2>
-<div>
+<!--<h2>{{profile.name | uppercase}}</h2>
+ <div>
   <span>id: </span>{{profile.id}}
 </div>
 <div>
@@ -10,4 +10,15 @@
   <label>name:
     <input [(ngModel)]="profile.name" placeholder="name">
   </label>
+</div> -->
+<div *ngFor="let profile of profiles">
+  <div class="row profile-row">
+      <div class="col-xs-3 portrait">
+        <img src="{{profile.profileUrl}}" />
+      </div>
+      <div class="col-xs-9">
+        <h3>{{profile.name}}</h3>
+        <p>{{profile.description}}</p>
+      </div>
+  </div>
 </div>
