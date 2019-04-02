@@ -16,8 +16,8 @@ export class ProfileService {
 
   //TODO: Add proper headers so calls go through properly
 
-  getProfile() {
-    return this.http.get<Quote[]>('https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=4')
+  getProfile(count: number) {
+    return this.http.get<Quote[]>('https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=' + count)
       // .subscribe(response => console.log(response))
     // return [
     //   {
@@ -47,8 +47,8 @@ export class ProfileService {
     // ]
   }
 
-  getNames() {
-    return this.http.get<UserResponse>('https://randomuser.me/api/?results=4')
+  getNames(count: number) {
+    return this.http.get<UserResponse>('https://randomuser.me/api/?results=' + count)
       // .subscribe(response => {
       //   for (let r of response.results) {
       //     console.log(r.name)

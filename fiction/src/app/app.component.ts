@@ -19,7 +19,7 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    forkJoin(this.profileService.getNames(), this.profileService.getProfile())
+    forkJoin(this.profileService.getNames(8), this.profileService.getProfile(8))
       .subscribe(response => {
         var userResponse = response[0]
         var quotes = response[1]
