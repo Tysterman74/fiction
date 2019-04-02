@@ -5,6 +5,10 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Quote } from './data/quoteResponse';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +17,7 @@ export class ProfileService {
   //TODO: Add proper headers so calls go through properly
 
   getProfile() {
-    return this.http.get<Quote[]>('http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=4')
+    return this.http.get<Quote[]>('http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=4', httpOptions)
       // .subscribe(response => console.log(response))
     // return [
     //   {
@@ -44,7 +48,7 @@ export class ProfileService {
   }
 
   getNames() {
-    return this.http.get<UserResponse>('https://randomuser.me/api/?results=4')
+    return this.http.get<UserResponse>('https://randomuser.me/api/?results=4', httpOptions)
       // .subscribe(response => {
       //   for (let r of response.results) {
       //     console.log(r.name)
