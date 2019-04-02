@@ -25,7 +25,8 @@ export class AppComponent {
         var quotes = response[1]
         for (var i = 0; i < userResponse.results.length; i++) {
           var profile = new Profile();
-          profile.profileUrl = "https://api.adorable.io/avatars/150/5nw4s2f.png"
+          profile.profileUrl = userResponse.results[i].picture.large
+          // profile.profileUrl = "https://api.adorable.io/avatars/150/"+this.generateRandomID()+".png"
           profile.name = userResponse.results[i].name.first
           profile.description = quotes[i].content
           this.profiles.push(profile)
@@ -43,5 +44,16 @@ export class AppComponent {
     //     }
     //   })
     // this.profiles = this.profileService.getProfiles()
+  }
+
+  generateRandomID() {
+    var text ="";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (var i = 0; i < 8; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length))
+    }
+
+    return text;
   }
 }

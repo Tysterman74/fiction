@@ -10,6 +10,8 @@ import { Quote } from './data/quoteResponse';
 })
 export class ProfileService {
 
+  //TODO: Add proper headers so calls go through properly
+
   getProfile() {
     return this.http.get<Quote[]>('http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=4')
       // .subscribe(response => console.log(response))
